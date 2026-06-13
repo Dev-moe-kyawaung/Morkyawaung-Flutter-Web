@@ -1,3 +1,4 @@
+// lib/components/certificates_section.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../constants/profile_data.dart';
@@ -58,7 +59,13 @@ class CertificatesSection extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
-          Text(cert["title"]!, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.textPrimary), textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis),
+          Text(
+            cert["title"]!,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
           SizedBox(height: 8),
           Text(cert["issuer"]!, style: TextStyle(fontSize: 16, color: AppColors.neonCyan, fontWeight: FontWeight.w500)),
           SizedBox(height: 5),
@@ -70,5 +77,22 @@ class CertificatesSection extends StatelessWidget {
         ],
       ),
     ).animate().fadeUp(duration: 600.ms, delay: 100.ms).scale(delay: 200.ms);
+  }
+  
+  Widget _buildSectionTitle(String title, BuildContext context) {
+    return Column(
+      children: [
+        Container(width: 80, height: 4, decoration: BoxDecoration(color: AppColors.neonCyan, borderRadius: BorderRadius.circular(2))),
+        SizedBox(height: 15),
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 42,
+            fontWeight: FontWeight.bold,
+            foreground: Paint()..shader = AppColors.textGradient.createShader(Rect.fromLTWH(0, 0, 500, 50)),
+          ),
+        ),
+      ],
+    );
   }
 }
